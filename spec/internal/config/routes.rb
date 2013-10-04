@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get "test/test"
+  get "some/some_action"
 end
