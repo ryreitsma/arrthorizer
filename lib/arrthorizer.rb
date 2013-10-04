@@ -1,5 +1,7 @@
 require "arrthorizer/version"
 
 module Arrthorizer
-  # Your code goes here...
+  def self.configure(&block)
+    self.tap(&block)
+  end
 end
