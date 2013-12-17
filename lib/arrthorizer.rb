@@ -7,6 +7,7 @@ module Arrthorizer
   autoload :RoleRepository, "arrthorizer/role_repository"
 
   autoload :Permission,     "arrthorizer/permission"
+  autoload :PrivilegeSet,   "arrthorizer/privilege_set"
 
   def self.configure(&block)
     self.tap(&block)
