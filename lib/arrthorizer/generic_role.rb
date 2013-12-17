@@ -5,6 +5,13 @@
 # organization, for example.
 module Arrthorizer
   class GenericRole < Role
+    attr_reader :name
+
+    def initialize(name)
+      @name = name
+
+      Role.register(self)
+    end
   end
 end
 
