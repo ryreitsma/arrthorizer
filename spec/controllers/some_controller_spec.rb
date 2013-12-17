@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SomeController do
   describe :some_action do
     let!(:privilege) { create_privilege_for(SomeController, :some_action) }
-    let!(:current_user) { mock("user") }
+    let!(:current_user) { double("user") }
 
     before do
       controller.stub(:current_user) { current_user }
