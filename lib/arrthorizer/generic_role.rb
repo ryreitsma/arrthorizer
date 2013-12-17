@@ -1,5 +1,3 @@
-require 'arrthorizer/role'
-
 ##
 # This is the class of all Generic Roles. A Generic Role is a role that does
 # not depend on context, but rather on membership - a user can be made a member
