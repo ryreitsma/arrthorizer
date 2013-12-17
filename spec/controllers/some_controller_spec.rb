@@ -115,7 +115,7 @@ describe SomeController do
   end
 
   def create_generic_role
-    Arrthorizer::GenericRole.new
+    Arrthorizer::GenericRole.new("generic role")
   end
 
   def configure_context_role(&block)
