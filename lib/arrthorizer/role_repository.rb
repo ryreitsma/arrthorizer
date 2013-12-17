@@ -1,8 +1,5 @@
 require 'singleton'
 
-require 'arrthorizer/context_role'
-require 'arrthorizer/generic_role'
-
 module Arrthorizer
   module RoleRepository
     include Enumerable
