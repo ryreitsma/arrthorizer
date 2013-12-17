@@ -5,17 +5,20 @@ module Arrthorizer
     def initialize(name)
       @name = name.to_s
 
-      self.class.repository[name] = self
+      self.class.register(self)
     end
 
-    def self.find_by_name(name)
-      self.repository[name] ||= new(name)
+    def self.get(name_or_privilege_set)
+      repository.get(name_or_privilege_set)
     end
 
-  protected
+    protected
+    def self.register(privilege_set)
+      repository.add(privilege_set)
+    end
+
     def self.repository
-      @repository ||= {}
+      @repository ||= Repository.new
     end
   end
 end
-

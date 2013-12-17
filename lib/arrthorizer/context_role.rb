@@ -16,7 +16,7 @@ module Arrthorizer
     def self.inherited(klass)
       super
 
-      RoleRepository.add(klass.instance)
+      Role.register(klass.instance)
     end
   end
 end
