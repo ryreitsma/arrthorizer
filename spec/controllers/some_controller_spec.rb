@@ -53,10 +53,10 @@ describe SomeController do
 
     describe "context roles" do
       let!(:context_role) do
-        create_context_role(:role) do |context|
+        configure_context_role do |user, context|
           # This can be any type of check, e.g.:
           #   blog = Blog.find(context[:id])
-          #   blog.author == context[:current_user]
+          #   blog.author == user
 
           # For the purpose of this test, just do a simple check:
           # is the param :some_param equal to true.
@@ -118,8 +118,10 @@ describe SomeController do
     # stub
   end
 
-  def create_context_role(name, &block)
-    # stub
+  def configure_context_role(&block)
+    UnnamespacedContextRole.instance.tap do |role|
+      role.stub(:applies_to_user?, &block)
+    end
   end
 
   def add_user_to_generic_role( user, generic_role )
