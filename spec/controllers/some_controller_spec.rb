@@ -121,9 +121,9 @@ describe SomeController do
   def create_context_role(name, &block)
     # stub
   end
+
   def add_role_to_privilege( role, privilege )
-    #PermissionFactory.allow(role).to_use(privilege)
-    #                        ^-- :blog_post_owner o.i.d.
+    Arrthorizer::Permission.grant(privilege, to: role)
   end
 
   def add_user_to_generic_role( user, generic_role )
