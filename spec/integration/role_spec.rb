@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe Arrthorizer::RoleRepository do
+describe Arrthorizer::Role do
   context "when a new ContextRole class is created" do
     let(:context_role) { class TestRole < Arrthorizer::ContextRole; end; TestRole.instance }
 
-    specify "that role is added to the RoleRepository" do
-      Arrthorizer::RoleRepository.should include(context_role.name)
+    specify "that role is stored" do
+      Arrthorizer::Role.get(context_role.name).should be context_role
     end
 
     after :each do
