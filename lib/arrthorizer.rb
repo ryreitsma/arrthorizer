@@ -1,13 +1,16 @@
 require "arrthorizer/version"
 
 module Arrthorizer
-  autoload :Repository,     "arrthorizer/repository"
-  autoload :Role,           "arrthorizer/role"
-  autoload :ContextRole,    "arrthorizer/context_role"
-  autoload :GenericRole,    "arrthorizer/generic_role"
+  autoload :ArrthorizerException,     "arrthorizer/arrthorizer_exception"
 
-  autoload :Permission,     "arrthorizer/permission"
-  autoload :PrivilegeSet,   "arrthorizer/privilege_set"
+  autoload :Repository,               "arrthorizer/repository"
+
+  autoload :Role,                     "arrthorizer/role"
+  autoload :ContextRole,              "arrthorizer/context_role"
+  autoload :GenericRole,              "arrthorizer/generic_role"
+
+  autoload :Permission,               "arrthorizer/permission"
+  autoload :PrivilegeSet,             "arrthorizer/privilege_set"
 
   def self.configure(&block)
     self.tap(&block)

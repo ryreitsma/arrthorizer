@@ -1,6 +1,6 @@
 module Arrthorizer
   class Repository
-    NotFound = Class.new(StandardError)
+    NotFound = Class.new(ArrthorizerException)
 
     def initialize
       @storage = Hash.new do |hash, key| raise NotFound, "Could not find value for #{key.inspect}" end
