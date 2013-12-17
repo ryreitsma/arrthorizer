@@ -70,20 +70,20 @@ describe SomeController do
         end
 
         context "when I supply the correct 'some_param' param" do
-          let(:allow) { true }
+          let(:allow_request) { true }
 
           it "succeeds" do
-            get :some_action, params: { some_param: allow }
+            get :some_action, some_param: allow_request
 
             response.should be_success
           end
         end
 
         context "when I do not supply the correct 'some_param' param" do
-          let(:allow) { "something else" }
+          let(:allow_request) { "something else" }
 
           it "succeeds" do
-            get :some_action, params: { some_param: allow }
+            get :some_action, some_param: allow_request
 
             response.should be_forbidden
           end
@@ -97,10 +97,10 @@ describe SomeController do
         end
 
         context "when I supply the correct 'some_param' param" do
-          let(:allow) { true }
+          let(:allow_request) { true }
 
           it "still fails" do
-            get :some_action, params: { some_param: allow }
+            get :some_action, some_param: allow_request
 
             response.should be_forbidden
           end
