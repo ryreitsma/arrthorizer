@@ -14,7 +14,7 @@ describe SomeController do
 
       context "when the role is linked to the privilege" do
         before do
-          add_role_to_privilege( generic_role, privilege )
+          Arrthorizer::Permission.grant(privilege, to: generic_role)
         end
 
         context "when I am a member of the required generic role" do
@@ -41,7 +41,7 @@ describe SomeController do
       context "when I am only a member of an unrelated generic role" do
         before do
           other_privilege = create_privilege_for(SomeController, :something)
-          add_role_to_privilege(generic_role, other_privilege)
+          Arrthorizer::Permission.grant(other_privilege, to: generic_role)
           add_user_to_generic_role(current_user, generic_role)
         end
 
@@ -66,7 +66,7 @@ describe SomeController do
 
       context "when the role is linked to the privilege" do
         before do
-          add_role_to_privilege( context_role, privilege )
+          Arrthorizer::Permission.grant(privilege, to: context_role)
         end
 
         context "when I supply the correct 'some_param' param" do
@@ -93,7 +93,7 @@ describe SomeController do
       context "when the role is linked to a different privilege" do
         before do
           other_privilege = create_privilege_for(SomeController, :something)
-          add_role_to_privilege( context_role, other_privilege )
+          Arrthorizer::Permission.grant(other_privilege, to: context_role)
         end
 
         context "when I supply the correct 'some_param' param" do
@@ -120,10 +120,6 @@ describe SomeController do
 
   def create_context_role(name, &block)
     # stub
-  end
-
-  def add_role_to_privilege( role, privilege )
-    Arrthorizer::Permission.grant(privilege, to: role)
   end
 
   def add_user_to_generic_role( user, generic_role )
