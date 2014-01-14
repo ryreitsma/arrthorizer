@@ -1,6 +1,6 @@
 module Arrthorizer
   class ContextBuilder
-    class ConfigurationError < Arrthorizer::ArrthorizerException; end
+    ConfigurationError = Class.new(Arrthorizer::ArrthorizerException)
 
     def initialize(&block)
       unless block_given?
