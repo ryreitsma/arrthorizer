@@ -13,6 +13,7 @@ module Arrthorizer
   autoload :PrivilegeSet,             "arrthorizer/privilege_set"
 
   autoload :ContextBuilder,           "arrthorizer/context_builder"
+  autoload :Context,                  "arrthorizer/context"
 
   autoload :Rails,                    "arrthorizer/rails"
 
