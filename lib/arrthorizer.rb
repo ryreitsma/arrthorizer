@@ -12,6 +12,10 @@ module Arrthorizer
   autoload :Permission,               "arrthorizer/permission"
   autoload :PrivilegeSet,             "arrthorizer/privilege_set"
 
+  autoload :ContextBuilder,           "arrthorizer/context_builder"
+
+  autoload :Rails,                    "arrthorizer/rails"
+
   def self.configure(&block)
     self.tap(&block)
   end
