@@ -37,10 +37,17 @@ module Arrthorizer
 
   class Context < OpenStruct
     def self.from_hash(hash)
-      self.new(hash)
+      hash.is_a?(Context) ? hash : self.new(hash)
     end
-    # class Builder that implements the above syntax
-    #
-    # It would be nice if the generated params would be a OpenStruct, to make Context Roles more readable.
+
+    def merge(hash)
+      h = to_hash.merge(hash.to_hash)
+
+      self.class.from_hash(h)
+    end
+
+    def to_hash
+      marshal_dump
+    end
   end
 end
