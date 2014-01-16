@@ -12,7 +12,7 @@ module Arrthorizer
         # built and provided to all ContextRoles that are configured as having
         # access to the given controller action.
         def arrthorizer_context
-          arrthorizer_context_builder.build_from_request(request)
+          arrthorizer_context_builder.build_for(self)
         end
 
         protected :arrthorizer_context, :arrthorizer_context_builder

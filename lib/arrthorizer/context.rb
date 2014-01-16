@@ -35,7 +35,10 @@ module Arrthorizer
   #   end
   # end
 
-  class Context
+  class Context < OpenStruct
+    def self.from_hash(hash)
+      self.new(hash)
+    end
     # class Builder that implements the above syntax
     #
     # It would be nice if the generated params would be a OpenStruct, to make Context Roles more readable.
