@@ -3,14 +3,14 @@ require "spec_helper"
 describe Arrthorizer::Rails::ControllerConcern do
   describe :to_prepare_context do
     let(:controller_class) { Class.new(ApplicationController) }
-    let(:expected_context_builder_type) { Arrthorizer::Rails::ControllerContextBuilder }
+    let(:expected_controller_configuration_type) { Arrthorizer::Rails::ControllerConfiguration }
 
-    it "adds a ControllerContextBuilder to the class" do
-      expected_context_builder = an_instance_of(expected_context_builder_type)
+    it "adds a ControllerConfiguration to the class" do
+      expected_controller_configuration = an_instance_of(expected_controller_configuration_type)
 
       expect {
         controller_class.to_prepare_context do end
-      }.to change { controller_class.arrthorizer_context_builder }.to(expected_context_builder)
+      }.to change { controller_class.arrthorizer_configuration }.to(expected_controller_configuration)
     end
 
     context "when we are dealing with a subclassed controller" do
@@ -20,18 +20,18 @@ describe Arrthorizer::Rails::ControllerConcern do
         controller_class.to_prepare_context do end
       end
 
-      it "does not alter the context builder for the superclass" do
+      it "does not alter the context config for the superclass" do
         expect {
           controller_subclass.to_prepare_context do end
-        }.not_to change { controller_class.arrthorizer_context_builder }
+        }.not_to change { controller_class.arrthorizer_configuration }
       end
     end
 
     context "when no configuration block is provided" do
-      specify "an Arrthorizer::Rails::ConfigurationError is raised" do
+      specify "an Arrthorizer::Rails::ControllerConfiguration::Error is raised" do
         expect {
           controller_class.to_prepare_context
-        }.to raise_error(Arrthorizer::ContextBuilder::ConfigurationError)
+        }.to raise_error(Arrthorizer::Rails::ControllerConfiguration::Error)
       end
     end
   end

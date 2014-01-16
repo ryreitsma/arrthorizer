@@ -2,13 +2,13 @@ module Arrthorizer
   # Make it possible to specify the context that Arrthorizer can evaluate from inside the controller:
   #
   # class MyController
-  #   to_prepare_context do |c| # yields a ControllerContextBuilder since this is a Rails controller
+  #   to_prepare_context do |c|
   #     c.defaults do
   #       { bookcase: Cms::Bookcase.find(params[:id]) }
   #     end
   #
   #     c.for_action(:some_action) do
-  #       c.defaults.merge({ bookcase: Cms::Book.find(params[:id]).bookcase })
+  #       arrthorizer_defaults.merge({ bookcase: Cms::Book.find(params[:id]).bookcase })
   #     end
   #   end
   # end
@@ -24,13 +24,14 @@ module Arrthorizer
   # In non-Rails environments:
   #
   # class MySomething
+  #   # probably include something like Arrthorizer::Config
   #   to_prepare_context do |c|
   #     c.defaults do
   #       { bookcase: Cms::Bookcase.find(params[:id]) }
   #     end
   #
   #     if params[:action] == :edit
-  #       c.defaults.merge { author: User.find(params[:author_id] }
+  #       arrthorizer_defaults.merge { author: User.find(params[:author_id] }
   #     end
   #   end
   # end
