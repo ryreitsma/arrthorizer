@@ -28,8 +28,6 @@ module Arrthorizer
 
       def add_action_block(action, &block)
         action_blocks[action] = block
-
-        puts action_blocks.inspect
       end
 
       def action_blocks
