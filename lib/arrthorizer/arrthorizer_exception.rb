@@ -1,11 +1,11 @@
 module Arrthorizer
   class ArrthorizerException < StandardError
-    attr_reader :original
+    attr_reader :inner
 
-    def initialize(message = "Exception occurred", original = $!)
+    def initialize(message = "Exception occurred", inner = $!)
       super(message)
 
-      @original = original
+      @inner = inner
     end
   end
 end
