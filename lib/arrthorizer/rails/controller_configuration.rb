@@ -4,11 +4,9 @@ module Arrthorizer
       Error = Class.new(Arrthorizer::ArrthorizerException)
 
       def initialize(&block)
-        unless block_given?
-          raise Error, "No builder block provided to ContextBuilder.new"
-        end
-
         yield self
+      rescue LocalJumpError
+        raise Error, "No builder block provided to ContextBuilder.new"
       end
 
       def defaults(&block)
