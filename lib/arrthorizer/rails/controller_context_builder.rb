@@ -10,7 +10,7 @@ module Arrthorizer
       end
 
       def build_for_action(current_action)
-        config = action_configs.fetch(current_action, defaults_config)
+        config = action_configs.fetch(current_action) { defaults_config }
         context_hash = controller.instance_eval(&config)
 
         build_from_hash(context_hash)
