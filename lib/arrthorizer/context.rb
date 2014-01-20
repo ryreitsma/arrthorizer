@@ -37,18 +37,23 @@ module Arrthorizer
   # end
 
   class Context < OpenStruct
-    def self.from_hash(hash)
-      hash.is_a?(Context) ? hash : self.new(hash)
-    end
+    ConversionError = Class.new(Arrthorizer::ArrthorizerException)
 
     def merge(hash)
-      h = to_hash.merge(hash.to_hash)
-
-      self.class.from_hash(h)
+      self.class.new(to_hash.merge(hash))
     end
 
     def to_hash
       marshal_dump
     end
+  end
+
+module_function
+  def Context(hash)
+    return hash if hash.is_a? Context
+
+    return Context.new(hash.to_hash)
+  rescue NoMethodError
+    raise Arrthorizer::Context::ConversionError, "Can't convert #{hash} to an Arrthorizer::Context"
   end
 end

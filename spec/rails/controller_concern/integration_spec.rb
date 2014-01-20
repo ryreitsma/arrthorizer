@@ -43,7 +43,7 @@ describe Arrthorizer::Rails do
           end
 
           it "uses the 'default' config to build an Arrthorizer context" do
-            controller.send(:arrthorizer_context).should == Arrthorizer::Context.from_hash(injected_params)
+            controller.send(:arrthorizer_context).should == Arrthorizer::Context(injected_params)
           end
         end
 
@@ -64,7 +64,7 @@ describe Arrthorizer::Rails do
 
           it "uses the more specific configuration for the current action" do
             context_hash = injected_params.merge(action_specific_config)
-            expected_context = Arrthorizer::Context.from_hash(context_hash)
+            expected_context = Arrthorizer::Context(context_hash)
 
             controller.send(:arrthorizer_context).should == expected_context
           end
