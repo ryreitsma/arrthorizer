@@ -18,7 +18,7 @@ module Arrthorizer
   autoload :Rails,                    "arrthorizer/rails"
 
   if defined?(::Rails)
-    require 'arrthorizer/rails'
+    Arrthorizer::Rails.initialize!
   end
 
   def self.configure(&block)

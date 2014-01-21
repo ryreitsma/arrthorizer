@@ -4,6 +4,9 @@ module Arrthorizer
     autoload :ControllerConcern,        "arrthorizer/rails/controller_concern"
     autoload :ControllerContextBuilder, "arrthorizer/rails/controller_context_builder"
 
-    ActionController::Base.send(:include, ControllerConcern)
+  module_function
+    def initialize!
+      ActionController::Base.send(:include, ControllerConcern)
+    end
   end
 end
