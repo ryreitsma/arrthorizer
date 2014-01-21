@@ -17,6 +17,10 @@ module Arrthorizer
 
   autoload :Rails,                    "arrthorizer/rails"
 
+  if defined?(::Rails)
+    require 'arrthorizer/rails'
+  end
+
   def self.configure(&block)
     self.tap(&block)
   end
