@@ -1,3 +1,5 @@
+require 'ostruct'
+
 module Arrthorizer
   # Make it possible to specify the context that Arrthorizer can evaluate from inside the controller:
   #
