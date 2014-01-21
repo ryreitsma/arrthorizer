@@ -19,6 +19,10 @@ module Arrthorizer
           arrthorizer_configuration.builder_for(self).build_for_action(nil)
         end
 
+        def forbidden
+          render text: 'Access Denied', status: :forbidden
+        end
+
         protected :arrthorizer_context, :arrthorizer_configuration, :arrthorizer_defaults
       end
 
