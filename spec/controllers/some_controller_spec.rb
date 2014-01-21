@@ -60,7 +60,7 @@ describe SomeController do
 
           # For the purpose of this test, just do a simple check:
           # is the param :some_param equal to true.
-          context[:some_param] == true
+          context.some_param == true
         end
       end
 
