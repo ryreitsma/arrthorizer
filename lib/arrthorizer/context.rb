@@ -51,11 +51,11 @@ module Arrthorizer
   end
 
 module_function
-  def Context(hash)
-    return hash if hash.is_a? Context
+  def Context(contents)
+    return contents if contents.is_a? Context
 
-    return Context.new(hash.to_hash)
+    return Context.new(contents.to_hash)
   rescue NoMethodError
-    raise Arrthorizer::Context::ConversionError, "Can't convert #{hash} to an Arrthorizer::Context"
+    raise Arrthorizer::Context::ConversionError, "Can't convert #{contents} to an Arrthorizer::Context"
   end
 end
