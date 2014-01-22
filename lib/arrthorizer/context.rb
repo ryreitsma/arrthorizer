@@ -48,6 +48,10 @@ module Arrthorizer
     def to_hash
       marshal_dump
     end
+
+    def ==(other)
+      to_hash == other.to_hash
+    end
   end
 
 module_function
