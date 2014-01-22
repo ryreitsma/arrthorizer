@@ -8,7 +8,11 @@ module Arrthorizer
     end
 
     def self.get(name_or_role)
-      repository.get(name_or_role)
+      if name_or_role.respond_to?(:instance)
+        get(name_or_role.instance)
+      else
+        repository.get(name_or_role)
+      end
     end
 
     def self.register(role)
