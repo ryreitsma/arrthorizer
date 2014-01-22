@@ -25,7 +25,7 @@ describe Arrthorizer::Context do
 
     context "when a hashlike object is provided" do
       context "and that object has the same contents" do
-        let(:other) { context_hash }
+        let(:other) { context_hash.dup }
 
         it "returns true" do
           expect(context).to eq(other)
