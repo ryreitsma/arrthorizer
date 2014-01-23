@@ -24,6 +24,10 @@ module Arrthorizer
       !!permitted_roles.get(role)
     end
 
+    def permitted_roles
+      @permitted_roles ||= Repository.new(raise_on_missing: false)
+    end
+
     protected
     def self.register(privilege)
       repository.add(privilege)
@@ -31,10 +35,6 @@ module Arrthorizer
 
     def self.repository
       @repository ||= Repository.new
-    end
-
-    def permitted_roles
-      @permitted_roles ||= Repository.new(raise_on_missing: false)
     end
   end
 end
