@@ -14,7 +14,7 @@ describe Arrthorizer::Privilege do
       let(:name) { "computer_says_hi" }
 
       before do
-        @privilege = Arrthorizer::Privilege.new(name)
+        @privilege = Arrthorizer::Privilege.new(name: name)
       end
 
       it "returns that privilege set" do
@@ -24,7 +24,7 @@ describe Arrthorizer::Privilege do
 
     context "when the parameter is already a privilege set" do
       before do
-        @privilege = Arrthorizer::Privilege.new("irrelevant")
+        @privilege = Arrthorizer::Privilege.new(name: "irrelevant")
       end
 
       specify "that privilege set is returned" do

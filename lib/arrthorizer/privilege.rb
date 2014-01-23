@@ -2,8 +2,9 @@ module Arrthorizer
   class Privilege
     attr_reader :name
 
-    def initialize(name)
-      @name = name.to_s
+    def initialize(attrs)
+      @name = attrs[:name].to_s
+      @roles = attrs.fetch(:roles) { [] }
 
       self.class.register(self)
     end
