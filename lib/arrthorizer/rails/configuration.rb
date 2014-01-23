@@ -8,8 +8,13 @@ module Arrthorizer
         # a runtime configuration.
       end
 
+    private
       def self.config
-        @config ||= YAML.load_file(config_file_location)
+        @config ||= YAML.load(config_file_contents) || {}
+      end
+
+      def self.config_file_contents
+        File.read(config_file_location)
       rescue Errno::ENOENT
         raise FileNotFound, "Arrthorizer requires a config file at #{config_file_name}"
       end
