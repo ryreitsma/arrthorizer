@@ -4,7 +4,10 @@ module Arrthorizer
 
     def initialize(attrs)
       @name = attrs[:name].to_s
-      @roles = attrs.fetch(:roles) { [] }
+
+      (attrs[:roles] || []).each do |role|
+        self.make_accessible_to(role)
+      end
 
       self.class.register(self)
     end
