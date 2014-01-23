@@ -1,1 +1,2 @@
-GenericRoleFixture = Arrthorizer::GenericRole.new(name: 'some_role')
+GenericRoleFixture = Arrthorizer::GenericRole.new('some_role')
+AnotherGenericRoleFixture = Arrthorizer::GenericRole.new('another_role')
