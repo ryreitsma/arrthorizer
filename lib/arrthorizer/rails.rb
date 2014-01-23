@@ -1,5 +1,6 @@
 module Arrthorizer
   module Rails
+    autoload :ControllerAction,         "arrthorizer/rails/controller_action"
     autoload :ControllerConfiguration,  "arrthorizer/rails/controller_configuration"
     autoload :ControllerConcern,        "arrthorizer/rails/controller_concern"
     autoload :ControllerContextBuilder, "arrthorizer/rails/controller_context_builder"
