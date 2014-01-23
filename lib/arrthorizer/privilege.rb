@@ -14,11 +14,11 @@ module Arrthorizer
     end
 
     def make_accessible_to(role)
-      permitted_roles << role
+      permitted_roles.add(role)
     end
 
     def accessible_to?(role)
-      permitted_roles.include? role
+      !!permitted_roles.get(role)
     end
 
     protected
@@ -31,7 +31,7 @@ module Arrthorizer
     end
 
     def permitted_roles
-      @permitted_roles ||= []
+      @permitted_roles ||= Repository.new(raise_on_missing: false)
     end
   end
 end
