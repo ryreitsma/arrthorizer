@@ -111,7 +111,7 @@ describe SomeController do
 
   private
   def create_privilege_for(controller, action)
-    Arrthorizer::PrivilegeSet.new("placeholder")
+    Arrthorizer::Privilege.new("placeholder")
   end
 
   def create_generic_role

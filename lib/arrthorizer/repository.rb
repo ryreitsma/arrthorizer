@@ -6,8 +6,8 @@ module Arrthorizer
       @storage = Hash.new do |hash, key| raise NotFound, "Could not find value for #{key.inspect}" end
     end
 
-    def add(privilege_set)
-      storage[privilege_set.name] = privilege_set
+    def add(privilege)
+      storage[privilege.name] = privilege
     end
 
     def get(key)

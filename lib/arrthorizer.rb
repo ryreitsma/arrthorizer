@@ -10,7 +10,7 @@ module Arrthorizer
   autoload :GenericRole,              "arrthorizer/generic_role"
 
   autoload :Permission,               "arrthorizer/permission"
-  autoload :PrivilegeSet,             "arrthorizer/privilege_set"
+  autoload :Privilege,                "arrthorizer/privilege"
 
   autoload :ContextBuilder,           "arrthorizer/context_builder"
 

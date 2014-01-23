@@ -1,5 +1,5 @@
 module Arrthorizer
-  class PrivilegeSet
+  class Privilege
     attr_reader :name
 
     def initialize(name)
@@ -8,8 +8,8 @@ module Arrthorizer
       self.class.register(self)
     end
 
-    def self.get(name_or_privilege_set)
-      repository.get(name_or_privilege_set)
+    def self.get(name_or_privilege)
+      repository.get(name_or_privilege)
     end
 
     def make_accessible_to(role)
@@ -21,8 +21,8 @@ module Arrthorizer
     end
 
     protected
-    def self.register(privilege_set)
-      repository.add(privilege_set)
+    def self.register(privilege)
+      repository.add(privilege)
     end
 
     def self.repository
