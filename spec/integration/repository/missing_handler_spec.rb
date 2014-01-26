@@ -1,24 +1,24 @@
 require "spec_helper"
 
 describe Arrthorizer::Repository do
-  subject(:repository) { Arrthorizer::Repository.new(raise_on_missing: raise_on_missing) }
+  subject(:repository) { Arrthorizer::Repository.new }
 
   context "when the requested value is not in the Repository" do
-    context "and the Repository was configured to raise on missing objects" do
-      let(:raise_on_missing) { true }
-
+    context "and no default value was specified" do
       it "raises an Arrthorizer::Repository::NotFound" do
         expect {
-          repository.get("some_value")
+          repository.fetch("some_value")
         }.to raise_error(Arrthorizer::Repository::NotFound)
       end
     end
 
-    context "and the Repository was configured to safely handle missing objects" do
-      subject(:repository) { Arrthorizer::Repository.new(raise_on_missing: false) }
+    context "and a default value was specified" do
+      subject(:repository) { Arrthorizer::Repository.new }
+      let(:default) { :default }
 
-      it "simply returns nil" do
-        expect(repository.get("some_value")).to be_nil
+      it "returns the default" do
+        actual = repository.fetch("some_value") { default }
+        expect(actual).to eq(default)
       end
     end
   end

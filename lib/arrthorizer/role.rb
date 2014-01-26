@@ -11,7 +11,7 @@ module Arrthorizer
       if name_or_role.respond_to?(:instance)
         get(name_or_role.instance)
       else
-        repository.get(name_or_role)
+        repository.fetch(name_or_role)
       end
     end
 
