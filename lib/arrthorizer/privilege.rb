@@ -13,7 +13,7 @@ module Arrthorizer
     end
 
     def self.get(name_or_privilege)
-      repository.get(name_or_privilege)
+      repository.fetch(name_or_privilege)
     end
 
     def make_accessible_to(role)
@@ -21,11 +21,11 @@ module Arrthorizer
     end
 
     def accessible_to?(role)
-      !!permitted_roles.get(role)
+      !!permitted_roles.fetch(role) { false }
     end
 
     def permitted_roles
-      @permitted_roles ||= Repository.new(raise_on_missing: false)
+      @permitted_roles ||= Repository.new
     end
 
     protected
