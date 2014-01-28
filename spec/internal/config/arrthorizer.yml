@@ -1,1 +1,7 @@
 ---
+get_some_action:
+  actions:
+    - some:
+      - some_action
+  roles:
+    - Arrthorizer::Nobody
