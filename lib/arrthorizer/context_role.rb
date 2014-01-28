@@ -13,6 +13,10 @@ module Arrthorizer
       self.class.name.underscore
     end
 
+    def self.applies_to_user?(*args)
+      instance.applies_to_user?(*args)
+    end
+
     def self.inherited(klass)
       super
 
