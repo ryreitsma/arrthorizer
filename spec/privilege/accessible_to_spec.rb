@@ -3,8 +3,8 @@ require "spec_helper"
 describe Arrthorizer::Privilege do
   subject(:privilege) { Arrthorizer::Privilege.new(name: "some privilege") }
 
-  let(:role) { GenericRoleFixture }
-  let(:other_role) { AnotherGenericRoleFixture }
+  let(:role) { SomeGenericRole }
+  let(:other_role) { AnotherGenericRole }
 
   describe :accessible_to? do
     context "when a Role was configured to have access to this privilege" do

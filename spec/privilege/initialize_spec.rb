@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe Arrthorizer::Privilege do
   describe :initialize do
-    let(:role) { GenericRoleFixture }
+    let(:role) { SomeGenericRole }
     let(:roles) { [ role ] }
     let(:name) { "some name" }
 

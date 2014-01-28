@@ -5,8 +5,7 @@ require_relative 'shared_examples/finding_the_right_role.rb'
 describe Arrthorizer::Role do
   describe :get do
     describe "fetching ContextRoles" do
-      # this role is a test fixture
-      let(:expected_role) { Namespaced::ContextRole.instance }
+      let(:expected_role) { Namespaced::ContextRole.instance } # provided by the internal Rails app
 
       context "when a ContextRole class is provided" do
         it_behaves_like "finding the right Role" do
@@ -28,7 +27,7 @@ describe Arrthorizer::Role do
     end
 
     context "fetching GenericRoles" do
-      let(:expected_role) { GenericRoleFixture }
+      let(:expected_role) { SomeGenericRole } # provided by the internal Rails app
 
       context "when a GenericRole is provided" do
         it_behaves_like "finding the right Role" do

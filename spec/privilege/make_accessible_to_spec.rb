@@ -3,7 +3,7 @@ require "spec_helper"
 describe Arrthorizer::Privilege do
   describe :make_accessible_to do
     let(:privilege) { Arrthorizer::Privilege.new(name: "privilege") }
-    let(:role) { GenericRoleFixture }
+    let(:role) { SomeGenericRole }
 
     it "makes the privilege accessible to the role" do
       expect {
