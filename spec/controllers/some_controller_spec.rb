@@ -49,6 +49,8 @@ describe SomeController do
         end
 
         it "fails" do
+          get :some_action
+
           response.should be_forbidden
         end
       end
