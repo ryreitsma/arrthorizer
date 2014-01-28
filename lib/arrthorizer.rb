@@ -17,6 +17,7 @@ module Arrthorizer
   autoload :Rails,                    "arrthorizer/rails"
 
   require 'arrthorizer/context'
+  require 'arrthorizer/roles'
 
   if defined?(::Rails)
     Arrthorizer::Rails.initialize!
