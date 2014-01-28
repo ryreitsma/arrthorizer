@@ -9,7 +9,7 @@ module Arrthorizer
     end
 
     def initialize
-      @storage = Hash.new
+      self.storage = Hash.new
     end
 
     def add(privilege)
@@ -21,10 +21,10 @@ module Arrthorizer
 
       formatted_key = key.respond_to?(:name) ? key.name : key
 
-      @storage.fetch(formatted_key, &block)
+      storage.fetch(formatted_key, &block)
     end
 
     private
-    attr_reader :storage
+    attr_accessor :storage
   end
 end
