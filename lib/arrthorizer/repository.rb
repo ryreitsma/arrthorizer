@@ -1,6 +1,12 @@
 module Arrthorizer
   class Repository
+    include Enumerable
+
     NotFound = Class.new(ArrthorizerException)
+
+    def each(&block)
+      storage.values.each(&block)
+    end
 
     def initialize
       @storage = Hash.new
