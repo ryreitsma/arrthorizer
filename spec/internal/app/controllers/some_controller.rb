@@ -9,4 +9,7 @@ class SomeController < ApplicationController
 
   def some_action
   end
+
+  def other_action
+  end
 end

@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe SomeController do
+  let(:action) { Arrthorizer::Rails::ControllerAction.fetch_by_name("some#some_action") }
+  let(:other_action) { Arrthorizer::Rails::ControllerAction.fetch_by_name("some#other_action") }
+
   describe :some_action do
-    let!(:privilege) { create_privilege_for(SomeController, :some_action) }
+    let!(:privilege) { action.privilege }
     let!(:current_user) { double("user") }
 
     before do
@@ -40,7 +43,7 @@ describe SomeController do
 
       context "when I am only a member of an unrelated generic role" do
         before do
-          other_privilege = create_privilege_for(SomeController, :something)
+          other_privilege = other_action.privilege
           Arrthorizer::Permission.grant(other_privilege, to: generic_role)
           add_user_to_generic_role(current_user, generic_role)
         end
@@ -92,7 +95,7 @@ describe SomeController do
 
       context "when the role is linked to a different privilege" do
         before do
-          other_privilege = create_privilege_for(SomeController, :something)
+          other_privilege = other_action.privilege
           Arrthorizer::Permission.grant(other_privilege, to: context_role)
         end
 
@@ -110,10 +113,6 @@ describe SomeController do
   end
 
   private
-  def create_privilege_for(controller, action)
-    Arrthorizer::Privilege.new(name: "placeholder")
-  end
-
   def create_generic_role
     Arrthorizer::GenericRole.new("generic role")
   end
