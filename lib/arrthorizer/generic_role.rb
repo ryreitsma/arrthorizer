@@ -12,6 +12,10 @@ module Arrthorizer
 
       Role.register(self)
     end
+
+    def applies_to_user?(user, context)
+      false
+    end
   end
 end
 
