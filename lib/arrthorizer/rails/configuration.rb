@@ -35,7 +35,7 @@ module Arrthorizer
 
       private
         def parse_privilege_node(name, description)
-          privilege = Arrthorizer::Privilege.new(name: name, roles: description.roles.map(&:constantize))
+          privilege = Arrthorizer::Privilege.new(name: name, roles: roles_from(description))
 
           description.actions.each do |node|
             controller_name = controller_from(node)
@@ -44,6 +44,11 @@ module Arrthorizer
               action.privilege = privilege
             end
           end
+        end
+
+        # node looks like this: { "actions" => { "controller_name" => ["namespaced/action_name"] }, roles: [ "Namespaced::Role" ] }
+        def roles_from(node)
+          (node.roles || []).map(&:constantize)
         end
 
         # node looks like this: { "controller_name" => ["namespaced/action_name", "another_action_name"] }
