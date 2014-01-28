@@ -4,7 +4,7 @@ module Arrthorizer
     # Template method: This method is implemented in the
     # ContextRole subclasses and GenericRole.
     def applies_to_user?(user, context = {})
-      raise NotImplementedError
+      raise NotImplementedError, "#{self.name} does not implement #applies_to_user?(user, context)"
     end
 
     def self.get(name_or_role)
