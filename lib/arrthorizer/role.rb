@@ -11,16 +11,16 @@ module Arrthorizer
       if name_or_role.respond_to?(:instance)
         get(name_or_role.instance)
       else
-        repository.fetch(name_or_role)
+        registry.fetch(name_or_role)
       end
     end
 
     def self.register(role)
-      repository.add(role)
+      registry.add(role)
     end
 
-    def self.repository
-      @repository ||= Repository.new
+    def self.registry
+      @registry ||= Registry.new
     end
   end
 end

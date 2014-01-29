@@ -13,7 +13,7 @@ module Arrthorizer
     end
 
     def self.get(name_or_privilege)
-      repository.fetch(name_or_privilege)
+      registry.fetch(name_or_privilege)
     end
 
     def make_accessible_to(role)
@@ -25,16 +25,16 @@ module Arrthorizer
     end
 
     def permitted_roles
-      @permitted_roles ||= Repository.new
+      @permitted_roles ||= Registry.new
     end
 
     protected
     def self.register(privilege)
-      repository.add(privilege)
+      registry.add(privilege)
     end
 
-    def self.repository
-      @repository ||= Repository.new
+    def self.registry
+      @registry ||= Registry.new
     end
   end
 end

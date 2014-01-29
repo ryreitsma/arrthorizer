@@ -30,15 +30,15 @@ module Arrthorizer
       end
 
       def self.fetch_by_name(name)
-        repository.fetch(name)
+        registry.fetch(name)
       end
 
       def self.register(controller_action)
-        repository.add(controller_action)
+        registry.add(controller_action)
       end
 
-      def self.repository
-        @repository ||= Repository.new
+      def self.registry
+        @registry ||= Registry.new
       end
     end
   end

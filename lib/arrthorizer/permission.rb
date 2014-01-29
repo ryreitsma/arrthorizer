@@ -7,7 +7,7 @@ module Arrthorizer
       role          = Role.get(config[:to])
 
       privilege.make_accessible_to(role)
-    rescue Repository::NotFound => e
+    rescue Registry::NotFound => e
       raise InvalidPermission, e.message
     end
   end

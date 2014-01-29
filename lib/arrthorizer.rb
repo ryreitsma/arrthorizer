@@ -3,7 +3,7 @@ require "arrthorizer/version"
 module Arrthorizer
   autoload :ArrthorizerException,     "arrthorizer/arrthorizer_exception"
 
-  autoload :Repository,               "arrthorizer/repository"
+  autoload :Registry,                 "arrthorizer/registry"
 
   autoload :Role,                     "arrthorizer/role"
   autoload :ContextRole,              "arrthorizer/context_role"

@@ -6,7 +6,7 @@ describe Arrthorizer::Privilege do
       it "raises a Privilege::NotFound error" do
         expect {
           Arrthorizer::Privilege.get("computer_says_no")
-        }.to raise_error(Arrthorizer::Repository::NotFound)
+        }.to raise_error(Arrthorizer::Registry::NotFound)
       end
     end
 

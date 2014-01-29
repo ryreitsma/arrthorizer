@@ -1,5 +1,5 @@
 module Arrthorizer
-  class Repository
+  class Registry
     include Enumerable
 
     NotFound = Class.new(ArrthorizerException)

@@ -4,14 +4,14 @@ module Arrthorizer
       extend self
 
       def reset!
-        Arrthorizer::Rails::ControllerAction.send(:repository).reset!
+        Arrthorizer::Rails::ControllerAction.send(:registry).reset!
 
         Arrthorizer::Rails::Configuration.load
       end
     end
   end
 
-  class Repository
+  class Registry
     def reset!
       self.storage = Hash.new
     end
